@@ -37,10 +37,11 @@ body { transition: background .4s, color .4s; }
     <!-- HOME -->
     <a href="../" class="font-bold text-primary">Portofolio</a>
 
-    <div class="flex gap-8 text-sm items-center">
-    <a href="../#about" class="hover:text-primary">About</a>
-<a href="../#projects" class="hover:text-primary">Projects</a>
-<a href="../#contact" class="hover:text-primary">Contact</a>
+    <!-- DESKTOP MENU -->
+    <div class="hidden md:flex gap-8 text-sm items-center">
+      <a href="../#about" class="hover:text-primary">About</a>
+      <a href="../#projects" class="hover:text-primary">Projects</a>
+      <a href="../#contact" class="hover:text-primary">Contact</a>
 
       <!-- theme toggle -->
       <button id="themeToggle"
@@ -58,8 +59,25 @@ body { transition: background .4s, color .4s; }
         </svg>
       </button>
     </div>
+
+    <!-- HAMBURGER (MOBILE ONLY) -->
+    <button id="hamburger"
+      class="md:hidden text-2xl opacity-70 hover:opacity-100 transition">
+      ☰
+    </button>
   </div>
 </nav>
+<!-- MOBILE MENU -->
+<div id="mobileMenu"
+  class="fixed inset-0 z-40 bg-black/80 backdrop-blur
+         flex flex-col justify-center items-center gap-8
+         text-lg text-white
+         opacity-0 pointer-events-none transition">
+  <a href="../#about" class="hover:text-primary">About</a>
+  <a href="../#projects" class="hover:text-primary">Projects</a>
+  <a href="../#contact" class="hover:text-primary">Contact</a>
+</div>
+
 
 
 
@@ -232,6 +250,25 @@ function toggleTheme() {
   document.documentElement.classList.toggle("dark")
 }
 document.getElementById("themeToggle").onclick = toggleTheme
+
+/* HAMBURGER MENU */
+const hamburger = document.getElementById("hamburger")
+const mobileMenu = document.getElementById("mobileMenu")
+
+hamburger.onclick = () => {
+  const isOpen = mobileMenu.classList.contains("opacity-100")
+
+  mobileMenu.classList.toggle("opacity-100", !isOpen)
+  mobileMenu.classList.toggle("pointer-events-none", isOpen)
+}
+
+/* close menu when click link */
+mobileMenu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    mobileMenu.classList.remove("opacity-100")
+    mobileMenu.classList.add("pointer-events-none")
+  })
+})
 </script>
 
 </body>

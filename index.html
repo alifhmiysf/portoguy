@@ -261,7 +261,11 @@ gsap.utils.toArray(".reveal").forEach(el => {
   })
 })
 
-
+/* =====================
+   THEME TOGGLE
+===================== */
+const themeToggle = document.getElementById("themeToggle")
+const themeToggleMobile = document.getElementById("themeToggleMobile")
 
 function toggleTheme() {
   document.documentElement.classList.toggle("dark")
@@ -270,18 +274,33 @@ function toggleTheme() {
 themeToggle.onclick = toggleTheme
 themeToggleMobile.onclick = toggleTheme
 
-updateThemeIcon()
-
-/* HAMBURGER */
+/* =====================
+   HAMBURGER MENU
+===================== */
+const hamburger = document.getElementById("hamburger")
 const menu = document.getElementById("mobileMenu")
+
 hamburger.onclick = () => {
-  menu.classList.toggle("pointer-events-none")
+  const isOpen = !menu.classList.contains("pointer-events-none")
+
+  menu.classList.toggle("pointer-events-none", isOpen)
+
   gsap.to(menu, {
-    opacity: menu.classList.contains("pointer-events-none") ? 0 : 1,
-    duration: .4
+    opacity: isOpen ? 0 : 1,
+    duration: 0.4,
+    ease: "power2.out"
   })
 }
+
+/* close menu on click */
+menu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    menu.classList.add("pointer-events-none")
+    gsap.to(menu, { opacity: 0, duration: 0.3 })
+  })
+})
 </script>
+
 
 </body>
 </html>
