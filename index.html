@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+<meta charset="UTF-8">
+<title>Ali Fahmi Yusuf | Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: '#6366f1'
+      }
+    }
+  }
+}
+</script>
+
+<!-- GSAP -->
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+<style>
+body { transition: background .4s, color .4s; }
+</style>
+</head>
+
+<body class="bg-white text-gray-900 dark:bg-[#020617] dark:text-gray-100 overflow-x-hidden">
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur bg-white/70 dark:bg-black/40 border-b border-black/10 dark:border-white/10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <h1 class="font-bold text-primary">Portofolio</h1>
+
+    <!-- DESKTOP MENU -->
+    <div class="hidden md:flex gap-8 text-sm items-center">
+      <a href="#about" class="hover:text-primary">About</a>
+      <a href="#projects" class="hover:text-primary">Projects</a>
+      <a href="#contact" class="hover:text-primary">Contact</a>
+
+      <!-- THEME ICON -->
+      <button id="themeToggle"
+  class="opacity-60 hover:opacity-100 transition text-gray-700 dark:text-gray-300">
+  <svg xmlns="http://www.w3.org/2000/svg"
+       class="w-5 h-5"
+       fill="none"
+       viewBox="0 0 24 24"
+       stroke="currentColor"
+       stroke-width="1.5">
+    <path stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M21 12.8A9 9 0 1 1 11.2 3
+             a7 7 0 0 0 9.8 9.8z"/>
+  </svg>
+</button>
+
+    </div>
+
+    <!-- MOBILE ICONS -->
+    <div class="flex md:hidden items-center gap-4">
+      <button id="themeToggleMobile"
+  class="opacity-60 hover:opacity-100 transition text-gray-700 dark:text-gray-300">
+  <svg xmlns="http://www.w3.org/2000/svg"
+       class="w-5 h-5"
+       fill="none"
+       viewBox="0 0 24 24"
+       stroke="currentColor"
+       stroke-width="1.5">
+    <path stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M21 12.8A9 9 0 1 1 11.2 3
+             a7 7 0 0 0 9.8 9.8z"/>
+  </svg>
+</button>
+
+      <button id="hamburger" class="text-2xl">☰</button>
+    </div>
+
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu"
+  class="fixed inset-0 z-40 bg-black/90 backdrop-blur
+         flex flex-col justify-center items-center gap-10
+         text-xl text-white
+         opacity-0 pointer-events-none">
+
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#projects" class="mobile-link">Projects</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="min-h-screen flex items-center justify-center relative px-6">
+  <div class="max-w-3xl text-center">
+
+    <span class="hero-tag inline-block mb-4 px-4 py-1 text-sm rounded-full bg-primary/10 text-primary">
+      Backend Engineer
+    </span>
+
+    <h2 class="hero-title text-5xl md:text-6xl font-extrabold mb-6">
+      Ali Fahmi Yusuf<br>
+      <span class="text-primary">Backend Engineer</span>
+    </h2>
+
+    <p class="hero-sub max-w-xl mx-auto text-gray-600 dark:text-gray-400">
+      Backend Engineer focused on secure, production-ready API systems.
+      Experienced with Laravel, authentication & authorization,
+      CI/CD pipelines, and Docker deployment.
+    </p>
+  </div>
+  
+
+  <!-- BACKGROUND -->
+  <div class="absolute inset-0 -z-10 overflow-hidden">
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px]
+                bg-primary/20 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-0 right-1/3 w-[400px] h-[400px]
+                bg-purple-400/20 rounded-full blur-[120px]"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="reveal px-10 py-40 max-w-5xl mx-auto">
+  <h3 class="text-3xl font-bold mb-6 text-primary">About Me</h3>
+  <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+    I am a Backend Engineer focused on building secure and maintainable systems.
+    I care deeply about authentication, authorization, data integrity,
+    automated testing, and clean architecture.
+  </p>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="reveal px-10 py-40 bg-gray-100 dark:bg-black/40">
+  <h3 class="text-3xl font-bold mb-16 text-center text-primary">
+    Selected Projects
+  </h3>
+
+  <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+
+    <div class="p-8 bg-white dark:bg-gray-900 rounded-2xl">
+      <h4 class="font-semibold mb-2 text-lg">Expense API</h4>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+        Secure REST API for expense tracking with strong access control
+        and production-ready architecture.
+      </p>
+      <div class="flex gap-2 text-xs text-primary mb-4">
+        <span>Laravel</span>
+        <span>API</span>
+        <span>Docker</span>
+      </div>
+      <a href="/expense-api.html" class="text-sm text-primary hover:underline">
+        View case study →
+      </a>
+    </div>
+
+    <div class="p-8 bg-white dark:bg-gray-900 rounded-2xl">
+      <h4 class="font-semibold mb-2">IoT Dashboard</h4>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        Monitoring dashboard consuming API data with real-time visualization.
+      </p>
+    </div>
+
+    <div class="p-8 bg-white dark:bg-gray-900 rounded-2xl">
+      <h4 class="font-semibold mb-2">Portfolio Website</h4>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        Clean engineering portfolio with scroll-based animation.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal px-10 py-40 text-center">
+  <h3 class="text-3xl font-bold mb-6 text-primary">Contact</h3>
+
+  <p class="mb-8 text-gray-600 dark:text-gray-400">
+    Interested in backend systems or collaboration?
+  </p>
+
+  <a href="mailto:alifhmiysf@gmail.com"
+     class="inline-block mb-10 px-8 py-3 rounded-full
+            bg-primary text-white hover:bg-indigo-600 transition">
+    Get in Touch
+  </a>
+
+  <!-- SOCIAL ICONS -->
+  <div class="flex justify-center gap-8">
+    
+    <!-- GitHub -->
+    <a href="https://github.com/alifhmiysf"
+       target="_blank"
+       aria-label="GitHub"
+       class="text-gray-500 hover:text-primary transition">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           class="w-6 h-6"
+           fill="currentColor"
+           viewBox="0 0 24 24">
+        <path d="M12 .5C5.73.5.5 5.74.5 12.03c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55v-2.02c-3.2.7-3.87-1.54-3.87-1.54-.52-1.32-1.27-1.67-1.27-1.67-1.04-.7.08-.69.08-.69 1.15.08 1.76 1.19 1.76 1.19 1.02 1.75 2.68 1.25 3.33.96.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.17a11.1 11.1 0 0 1 5.8 0c2.2-1.48 3.17-1.17 3.17-1.17.62 1.59.23 2.76.11 3.05.74.8 1.18 1.82 1.18 3.07 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.08.78 2.18v3.23c0 .3.2.66.79.55A11.53 11.53 0 0 0 23.5 12C23.5 5.74 18.27.5 12 .5z"/>
+      </svg>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/alifhmiysf"
+       target="_blank"
+       aria-label="LinkedIn"
+       class="text-gray-500 hover:text-primary transition">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           class="w-6 h-6"
+           fill="currentColor"
+           viewBox="0 0 24 24">
+        <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.6h.1c.53-1 1.83-2.1 3.77-2.1 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3-.03-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"/>
+      </svg>
+    </a>
+
+    <!-- Email -->
+    <a href="mailto:alifhmiysf@gmail.com"
+       aria-label="Email"
+       class="text-gray-500 hover:text-primary transition">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           class="w-6 h-6"
+           fill="currentColor"
+           viewBox="0 0 24 24">
+        <path d="M2 4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H2zm0 2 10 6 10-6v2l-10 6L2 8V6z"/>
+      </svg>
+    </a>
+
+  </div>
+</section>
+
+
+<footer class="text-center py-6 text-gray-500 border-t border-black/10 dark:border-white/10">
+  © 2026 Ali Fahmi Yusuf
+</footer>
+
+<!-- SCRIPT -->
+<script>
+gsap.registerPlugin(ScrollTrigger)
+
+/* HERO */
+gsap.timeline()
+  .from(".hero-tag", { opacity: 0, y: 20, duration: .6 })
+  .from(".hero-title", { opacity: 0, y: 60, duration: 1 })
+  .from(".hero-sub", { opacity: 0, y: 30, duration: .8 }, "-=0.5")
+
+/* REVEAL */
+gsap.utils.toArray(".reveal").forEach(el => {
+  gsap.from(el, {
+    scrollTrigger: { trigger: el, start: "top 80%" },
+    opacity: 0,
+    y: 80,
+    duration: 1,
+    ease: "power3.out"
+  })
+})
+
+
+
+function toggleTheme() {
+  document.documentElement.classList.toggle("dark")
+}
+
+themeToggle.onclick = toggleTheme
+themeToggleMobile.onclick = toggleTheme
+
+updateThemeIcon()
+
+/* HAMBURGER */
+const menu = document.getElementById("mobileMenu")
+hamburger.onclick = () => {
+  menu.classList.toggle("pointer-events-none")
+  gsap.to(menu, {
+    opacity: menu.classList.contains("pointer-events-none") ? 0 : 1,
+    duration: .4
+  })
+}
+</script>
+
+</body>
+</html>
