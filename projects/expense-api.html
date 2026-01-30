@@ -30,11 +30,10 @@ body { transition: background .4s, color .4s; }
 
 <body class="bg-white text-gray-900 dark:bg-[#020617] dark:text-gray-100">
 
-<!-- NAVBAR (SAMA DENGAN LANDING) -->
+<!-- NAVBAR -->
 <nav class="fixed top-0 w-full z-50 backdrop-blur bg-white/70 dark:bg-black/40 border-b border-black/10 dark:border-white/10">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-    <!-- HOME -->
     <a href="../" class="font-bold text-primary">Portofolio</a>
 
     <!-- DESKTOP MENU -->
@@ -43,7 +42,6 @@ body { transition: background .4s, color .4s; }
       <a href="../#projects" class="hover:text-primary">Projects</a>
       <a href="../#contact" class="hover:text-primary">Contact</a>
 
-      <!-- theme toggle -->
       <button id="themeToggle"
         class="opacity-60 hover:opacity-100 transition text-gray-700 dark:text-gray-300">
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -60,23 +58,42 @@ body { transition: background .4s, color .4s; }
       </button>
     </div>
 
-    <!-- HAMBURGER (MOBILE ONLY) -->
-    <button id="hamburger"
-      class="md:hidden text-2xl opacity-70 hover:opacity-100 transition">
-      ☰
-    </button>
+    <!-- MOBILE ICONS -->
+    <div class="flex md:hidden items-center gap-4">
+      <button id="themeToggleMobile"
+        class="opacity-60 hover:opacity-100 transition text-gray-700 dark:text-gray-300">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             class="w-5 h-5"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke="currentColor"
+             stroke-width="1.5">
+          <path stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 12.8A9 9 0 1 1 11.2 3
+                   a7 7 0 0 0 9.8 9.8z"/>
+        </svg>
+      </button>
+
+      <button id="hamburger" class="text-2xl">☰</button>
+    </div>
+
   </div>
 </nav>
+
 <!-- MOBILE MENU -->
 <div id="mobileMenu"
-  class="fixed inset-0 z-40 bg-black/80 backdrop-blur
-         flex flex-col justify-center items-center gap-8
-         text-lg text-white
-         opacity-0 pointer-events-none transition">
-  <a href="../#about" class="hover:text-primary">About</a>
-  <a href="../#projects" class="hover:text-primary">Projects</a>
-  <a href="../#contact" class="hover:text-primary">Contact</a>
+  class="fixed inset-0 z-40 bg-black/90 backdrop-blur
+         flex flex-col justify-center items-center gap-10
+         text-xl text-white
+         opacity-0 pointer-events-none">
+
+  <a href="../#about" class="mobile-link">About</a>
+  <a href="../#projects" class="mobile-link">Projects</a>
+  <a href="../#contact" class="mobile-link">Contact</a>
 </div>
+
+
 
 
 
@@ -249,7 +266,12 @@ body { transition: background .4s, color .4s; }
 function toggleTheme() {
   document.documentElement.classList.toggle("dark")
 }
-document.getElementById("themeToggle").onclick = toggleTheme
+
+const themeToggle = document.getElementById("themeToggle")
+const themeToggleMobile = document.getElementById("themeToggleMobile")
+
+themeToggle.onclick = toggleTheme
+themeToggleMobile.onclick = toggleTheme
 
 /* HAMBURGER MENU */
 const hamburger = document.getElementById("hamburger")
@@ -270,6 +292,7 @@ mobileMenu.querySelectorAll("a").forEach(link => {
   })
 })
 </script>
+
 
 </body>
 </html>
